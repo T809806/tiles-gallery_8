@@ -1,25 +1,81 @@
-<<<<<<< HEAD
 # tiles-gallery_8
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Tiles Gallery - Next.js Project
 
-First, run the development server:
+A modern and responsive "Tiles Gallery web application" built using "Next.js (App Router)" and "Tailwind CSS".  
+This project allows users to browse tiles, view featured collections, and explore detailed information of each tile using dynamic routing.
 
+---
+
+## Live Demo
+
+👉 https://your-live-link.vercel.app  
+*(Replace with your actual Vercel link)*
+
+---
+
+## Project Screenshot
+
+![Tiles Gallery Screenshot](https://your-screenshot-link.com)  
+*(Optional: add screenshot from your project)*
+
+---
+
+## Features
+
+- Modern Home Page with Hero Section
+-  Featured Tiles Display (Top 4 items)
+-  All Tiles Grid Layout
+-  Dynamic Tile Details Page (`/tile/[id]`)
+-  Responsive Navbar with Active Links
+-  Clean UI with Tailwind CSS styling
+-  Fast performance using Next.js App Router
+-  Error handling for invalid tile IDs
+
+---
+
+##  Tech Stack
+
+- Next.js 14+ (App Router)
+- React.js
+- Tailwind CSS
+- JavaScript (ES6)
+- JSON (Mock Database)
+- DaisyUI (optional styling)
+
+---
+
+##  Dependencies Used
+
+- next
+- react
+- react-dom
+- tailwindcss
+- postcss
+- autoprefixer
+- daisyui (optional)
+
+---
+
+
+---
+
+##  How to Run Locally
+
+###  1. Clone the repository
 ```bash
+git clone https://github.com/your-username/tiles-gallery.git
+
+2. Go to project folder
+cd tiles-gallery
+
+3. Install dependencies
+npm install
+
+4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open in browser
+http://localhost:3000
+3
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/op
->>>>>>> 46f851e (Initial commit from Create Next App)
