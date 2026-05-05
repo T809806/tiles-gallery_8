@@ -1,49 +1,51 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import tiles from "@/data/tiles.json";
 
 export default function AllTilesPage() {
+  const [search, setSearch] = useState("");
+
+  const filteredTiles = tiles.filter((tile) =>
+    tile.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="p-8">
 
-      <h1 className="text-3xl font-bold text-center mb-8">
-        All Tiles Collection
-      </h1>
+      {/* SEARCH BAR */}
+      <input
+        type="text"
+        placeholder="Search tiles..."
+        className="input input-bordered w-full mb-6"
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {/* GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
-        {tiles.map((tile) => (
-          <div
-            key={tile.id}
-            className="bg-white border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
-          >
+        {filteredTiles.map((tile) => (
+          <div key={tile.id} className="card shadow-lg">
 
             <img
               src={tile.image}
-              alt={tile.title}
-              className="h-44 w-full object-cover"
+              className="h-40 w-full object-cover"
             />
 
             <div className="p-4 space-y-2">
 
-              <h2 className="text-lg font-bold">
-                {tile.title}
-              </h2>
+              <h3 className="font-bold">{tile.title}</h3>
 
               <p className="text-sm text-gray-500">
                 {tile.category}
               </p>
 
-              <p className="font-semibold text-gray-700">
-                💲 {tile.price} {tile.currency}
-              </p>
-
               <Link
                 href={`/tile/${tile.id}`}
-                className="inline-block mt-2 text-blue-600 font-medium hover:underline"
+                className="btn bg-sky-500 hover:bg-sky-600 text-white btn-sm"
               >
-                View Details
+                Details
               </Link>
 
             </div>

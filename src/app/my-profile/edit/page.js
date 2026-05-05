@@ -1,61 +1,46 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function EditProfile() {
+  const router = useRouter();
 
   const [name, setName] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [image, setImage] = useState("");
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const handleUpdate = () => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("image", image);
 
-    if (!name || !photo) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    alert("Profile Updated Successfully (Demo)");
-
-    // redirect back
-    window.location.href = "/my-profile";
+    router.push("/my-profile");
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-200 p-4">
+    <div className="h-screen flex items-center justify-center">
 
-      <div className="w-full max-w-md bg-base-100 p-8 rounded-xl shadow-lg">
+      <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
 
-        <h1 className="text-2xl font-bold text-center mb-6">
-          Update Profile
-        </h1>
+        <h1 className="text-xl font-bold">Update Profile</h1>
 
-        <form onSubmit={handleUpdate} className="space-y-4">
+        <input
+          className="input input-bordered w-full"
+          placeholder="Name"
+          onChange={(e) => setName(e.target.value)}
+        />
 
-          {/* NAME */}
-          <input
-            type="text"
-            placeholder="Update Name"
-            className="input input-bordered w-full"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        <input
+          className="input input-bordered w-full"
+          placeholder="Image URL"
+          onChange={(e) => setImage(e.target.value)}
+        />
 
-          {/* PHOTO */}
-          <input
-            type="text"
-            placeholder="Update Photo URL"
-            className="input input-bordered w-full"
-            value={photo}
-            onChange={(e) => setPhoto(e.target.value)}
-          />
-
-          {/* BUTTON */}
-          <button className="btn btn-primary w-full">
-            Update Information
-          </button>
-
-        </form>
+        <button
+          onClick={handleUpdate}
+          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
+        >
+          Update
+        </button>
 
       </div>
 

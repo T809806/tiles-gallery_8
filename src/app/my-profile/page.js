@@ -1,49 +1,39 @@
 "use client";
 
-export default function MyProfile() {
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-  // demo user (later auth connect হবে)
-  const user = {
-    name: "Demo User",
-    email: "demo@gmail.com",
-    photo: "https://i.ibb.co/4pDNDk1/avatar.png"
-  };
+export default function Profile() {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+
+  useEffect(() => {
+    setName(localStorage.getItem("name") || "Guest");
+    setImage(localStorage.getItem("image") || "");
+  }, []);
 
   return (
-    <div className="p-6 md:p-10">
+    <div className="min-h-screen flex items-center justify-center bg-base-100">
 
-      <h1 className="text-3xl font-bold mb-6">
-        My Profile
-      </h1>
+      <div className="p-8 rounded-xl shadow-lg text-center w-80 bg-white space-y-4">
 
-      <div className="bg-base-200 p-6 rounded-xl shadow-md flex flex-col md:flex-row items-center gap-6">
-
-        {/* PROFILE IMAGE */}
         <img
-          src={user.photo}
-          alt="profile"
-          className="w-32 h-32 rounded-full object-cover border-4 border-primary"
+          src={image || "https://via.placeholder.com/150"}
+          className="w-28 h-28 rounded-full mx-auto border-4 border-sky-500"
         />
 
-        {/* INFO */}
-        <div className="space-y-2 text-center md:text-left">
+        <h1 className="text-2xl font-bold">{name}</h1>
 
-          <p className="text-xl font-bold">
-            {user.name}
-          </p>
+        <p className="text-gray-500 text-sm">
+          Welcome to your profile
+        </p>
 
-          <p className="text-gray-600">
-            {user.email}
-          </p>
-
-          <button className="btn btn-primary mt-3">
-            <a href="/my-profile/edit" className="btn btn-primary mt-3">
-  Update Info
-</a>
-            
-          </button>
-
-        </div>
+        <Link
+          href="/my-profile/edit"
+          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
+        >
+          Edit Profile
+        </Link>
 
       </div>
 
