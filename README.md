@@ -1,6 +1,6 @@
 # tiles-gallery_8
 
-# Tiles Gallery - Next.js Project
+# Overview
 
 A modern and responsive "Tiles Gallery web application" built using "Next.js (App Router)" and "Tailwind CSS".  
 This project allows users to browse tiles, view featured collections, and explore detailed information of each tile using dynamic routing.
@@ -11,6 +11,11 @@ This project allows users to browse tiles, view featured collections, and explor
 
 👉 https://your-live-link.vercel.app  
 *(Replace with your actual Vercel link)*
+
+---
+
+## Other Link 
+https://github.com/T809806/tiles-gallery_8.git
 
 ---
 
@@ -57,16 +62,13 @@ This project allows users to browse tiles, view featured collections, and explor
 
 ---
 
-
----
-
 ##  How to Run Locally
 
-###  1. Clone the repository
+1. Clone the repository
 ```bash
 git clone https://github.com/your-username/tiles-gallery.git
 
-2. Go to project folder
+ 2. Go to project folder
 cd tiles-gallery
 
 3. Install dependencies
@@ -77,5 +79,5 @@ npm run dev
 
 5. Open in browser
 http://localhost:3000
-3
+
 
