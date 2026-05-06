@@ -2,18 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client"; // path check
+import { authClient } from "@/lib/auth-client"; 
 
-export default function Login() {
-  const router = useRouter();
+      export default function Login() {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+         const router = useRouter();
+         const [email, setEmail] = useState("");
+         const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      alert("All fields are required");
-      return;
+ 
+         const handleLogin = async () => {
+         if (!email || !password) {
+         alert("All fields are required");
+         return;
+
     }
 
     try {
@@ -39,48 +41,47 @@ export default function Login() {
   };
 
   return (
+
     <div className="h-screen flex items-center justify-center">
+    <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
+    <h1 className="text-xl font-bold text-center"> Login </h1>
 
-      <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
+      
+    <input
+       type="email"
+       placeholder="Email"
+       className="input input-bordered w-full"
+       onChange={(e) => setEmail(e.target.value)}
+    />
 
-        <h1 className="text-xl font-bold text-center">
-          Login
-        </h1>
+       
+     <input
+       type="password"
+       placeholder="Password"
+       className="input input-bordered w-full"
+       onChange={(e) => setPassword(e.target.value)}
+    />
 
-        {/* EMAIL */}
-        <input
-          type="email"
-          placeholder="Email"
-          className="input input-bordered w-full"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+       
+    <button
+         onClick={handleLogin}
+        className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
+    >
+        Login
 
-        {/* PASSWORD */}
-        <input
-          type="password"
-          placeholder="Password"
-          className="input input-bordered w-full"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    </button>
 
-        {/* BUTTON */}
-        <button
-          onClick={handleLogin}
-          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
-        >
-          Login
-        </button>
+      
+     <p className="text-sm text-center">
 
-        {/* REGISTER LINK */}
-        <p className="text-sm text-center">
           Don't have an account?{" "}
-          <a href="/register" className="text-sky-500">
-            Register
-          </a>
-        </p>
 
-      </div>
+        <a href="/register" className="text-sky-500"> Register </a>
 
-    </div>
+    </p>
+
+   </div>
+  </div>
+  
   );
 }

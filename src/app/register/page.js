@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client"; // check path
+import { authClient } from "@/lib/auth-client"; 
 
-export default function Register() {
-  const router = useRouter();
+        export default function Register() {
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+              const router = useRouter();
+              const [name, setName] = useState("");
+              const [email, setEmail] = useState("");
+              const [password, setPassword] = useState("");
 
-  const handleRegister = async () => {
-    if (!name || !email || !password) {
-      alert("All fields are required");
-      return;
+             const handleRegister = async () => {
+
+                   if (!name || !email || !password) {
+                  alert("All fields are required");
+                  return;
     }
 
     try {
@@ -43,48 +44,51 @@ export default function Register() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
 
+      <div className="h-screen flex items-center justify-center">
       <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
+      <h1 className="text-xl font-bold text-center"> Create Account </h1>
 
-        <h1 className="text-xl font-bold text-center">
-          Create Account
-        </h1>
+      <input
 
-        {/* NAME */}
-        <input
           type="text"
           placeholder="Full Name"
           className="input input-bordered w-full"
           onChange={(e) => setName(e.target.value)}
-        />
 
-        {/* EMAIL */}
-        <input
+    />
+
+     <input
           type="email"
           placeholder="Email"
           className="input input-bordered w-full"
           onChange={(e) => setEmail(e.target.value)}
-        />
 
-        {/* PASSWORD */}
-        <input
+    />
+
+    
+     <input
+
           type="password"
           placeholder="Password"
           className="input input-bordered w-full"
           onChange={(e) => setPassword(e.target.value)}
-        />
 
-        {/* BUTTON */}
-        <button
-          onClick={handleRegister}
-          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
-        >
-          Register
-        </button>
+     />
 
-      </div>
+       
+   <button
+      onClick={handleRegister}
+      className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
 
-    </div>
+     >
+         Register
+
+   </button>
+
+  </div>
+  </div>
+
   );
+  
 }

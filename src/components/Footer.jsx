@@ -29,10 +29,10 @@ export default function Footer() {
 
           <div>
 
-            <h3 className="font-semibold mb-3">Contact Us</h3>
+            <h3 className="font-semibold mb-3"> Contact Us </h3>
             <p className="text-sm text-gray-500"> 📧 support@tilesgallery.com </p>
-            <p className="text-sm text-gray-500"> 📞 +880 1234-567890 </p>
-            <p className="text-sm text-gray-500"> 📍 Dhaka, Bangladesh </p>
+            <p className="text-sm text-gray-500"> 📞 +880 1234-500000 </p>
+            <p className="text-sm text-gray-500"> 📍 Dhaka,Bangladesh </p>
 
          <div className="flex gap-4 mt-4">
 

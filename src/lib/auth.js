@@ -7,8 +7,11 @@ const db = client.db("tiles-gallery-8");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {client}),
+
   emailAndPassword: {
 
-    enabled: true,
+       enabled: true,
+
   }
+  
 });

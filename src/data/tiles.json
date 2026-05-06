@@ -11,6 +11,7 @@
     "material": "Ceramic",
     "inStock": true
   },
+
   {
     "id": "tile2",
     "title": "Modern Floor Tile",
@@ -23,6 +24,7 @@
     "material": "Porcelain",
     "inStock": true
   },
+
   {
     "id": "tile3",
     "title": "White Wall Tile",
@@ -35,6 +37,7 @@
     "material": "Ceramic",
     "inStock": true
   },
+
   {
     "id": "tile4",
     "title": "Black Marble Tile",
@@ -47,6 +50,7 @@
     "material": "Marble",
     "inStock": false
   },
+
   {
     "id": "tile5",
     "title": "Wood Texture Tile",
@@ -59,6 +63,7 @@
     "material": "Porcelain",
     "inStock": true
   },
+
   {
     "id": "tile6",
     "title": "Geometric Pattern Tile",
@@ -71,6 +76,7 @@
     "material": "Ceramic",
     "inStock": true
   },
+
   {
     "id": "tile7",
     "title": "Glossy Beige Tile",
@@ -83,6 +89,7 @@
     "material": "Ceramic",
     "inStock": true
   },
+  
   {
     "id": "tile8",
     "title": "Outdoor Stone Tile",
