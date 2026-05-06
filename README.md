@@ -7,11 +7,13 @@ This project allows users to browse tiles, view featured collections, and explor
 
 ---
 
-## Live Demo
+## Deployment
 
-👉 https://your-live-link.vercel.app  
-*(Replace with your actual Vercel link)*
+This project is deployed on Vercel.
 
+Live URL: https://your-project.vercel.app
+
+The application is a Single Page Application (SPA) built with Next.js App Router. All routes are handled client-side, ensuring smooth navigation without page reload errors.
 ---
 
 ## Other Link 
