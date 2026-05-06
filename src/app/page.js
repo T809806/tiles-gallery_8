@@ -26,17 +26,21 @@ import tiles from "@/data/tiles.json";
 
      
    <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
-   <div className="relative flex overflow-hidden py-3">
-   <div className="flex whitespace-nowrap animate-scroll text-sm font-medium text-gray-600 gap-10 px-4">
+  
+  <div className="relative flex overflow-hidden py-3">
+
+    <div className="flex whitespace-nowrap animate-scroll text-sm font-medium text-gray-600 gap-10 px-4">
 
       <span> New Arrivals: {tiles[0]?.title} </span>
-      <span> | Weekly Feature: Modern Geometric Patterns </span>
-      <span> | Trending: Marble Luxury Tiles </span>
-      <span> | Join the Community Today </span>
+      <span>| Weekly Feature: Modern Geometric Patterns </span>
+      <span>| Trending: Marble Luxury Tiles </span>
+      <span>| Join the Community Today </span>
+
+    
       <span> New Arrivals: {tiles[0]?.title} </span>
-      <span> | Weekly Feature: Modern Geometric Patterns </span>
-      <span> | Trending: Marble Luxury Tiles </span>
-      <span> | Join the Community Today </span>
+      <span>| Weekly Feature: Modern Geometric Patterns </span>
+      <span>| Trending: Marble Luxury Tiles</span>
+      <span>| Join the Community Today</span>
 
     </div>
 
