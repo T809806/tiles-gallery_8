@@ -1,41 +1,54 @@
-"use client";
+ "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 
 export default function Profile() {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const router = useRouter();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setName(localStorage.getItem("name") || "Guest");
-    setImage(localStorage.getItem("image") || "");
+    const checkUser = async () => {
+      const session = await authClient.getSession();
+
+      if (!session?.data) {
+        router.push("/login");
+      } else {
+        setUser(session.data.user);
+      }
+    };
+
+    checkUser();
   }, []);
 
+  if (!user) return <p className="text-center mt-10">Loading...</p>;
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-100">
+    <div className="p-10 text-center space-y-4">
 
-      <div className="p-8 rounded-xl shadow-lg text-center w-80 bg-white space-y-4">
+      {/* PROFILE IMAGE (FIXED) */}
+      <img
+        src={
+          user.image ||
+          "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZsb3dlcnxlbnwwfHwwfHx8MA%3D%3D"
+        }
+        className="w-32 h-32 rounded-full mx-auto object-cover"
+      />
 
-        <img
-          src={image || "https://via.placeholder.com/150"}
-          className="w-28 h-28 rounded-full mx-auto border-4 border-sky-500"
-        />
+      <h1 className="text-2xl font-bold">
+        {user.name}
+      </h1>
 
-        <h1 className="text-2xl font-bold">{name}</h1>
+      <p>{user.email}</p>
 
-        <p className="text-gray-500 text-sm">
-          Welcome to your profile
-        </p>
-
-        <Link
-          href="/my-profile/edit"
-          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
-        >
-          Edit Profile
-        </Link>
-
-      </div>
+      <Link
+        href="/my-profile/edit"
+        className="btn bg-sky-500 hover:bg-sky-600 text-white"
+      >
+        Edit Profile
+      </Link>
 
     </div>
   );
