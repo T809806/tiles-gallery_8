@@ -11,7 +11,7 @@ This project allows users to browse tiles, view featured collections, and explor
 
 This project is deployed on Vercel.
 
-Live URL: https://your-project.vercel.app
+Live URL: tiles-gallery-8-amber.vercel.app
 
 The application is a Single Page Application (SPA) built with Next.js App Router. All routes are handled client-side, ensuring smooth navigation without page reload errors.
 ---
