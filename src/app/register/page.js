@@ -1,96 +1,87 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client"; // check path
 
-export default function RegisterPage() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    photo: "",
-    password: "",
-  });
+export default function Register() {
+  const router = useRouter();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleRegister = async () => {
+    if (!name || !email || !password) {
+      alert("All fields are required");
+      return;
+    }
 
-    if (form.name && form.email && form.password) {
-      alert("Registration Successful (Demo)");
-      window.location.href = "/login";
-    } else {
-      alert("Please fill all fields");
+    try {
+      const { data, error } = await authClient.signUp.email(
+        {
+          email,
+          password,
+          name,
+          callbackURL: "/login",
+        }
+      );
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      alert("Registration Successful!");
+
+      router.push("/login");
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-200 p-4">
+    <div className="h-screen flex items-center justify-center">
 
-      <div className="w-full max-w-md bg-base-100 p-8 rounded-xl shadow-lg">
+      <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
 
-        <h1 className="text-2xl font-bold text-center mb-6">
+        <h1 className="text-xl font-bold text-center">
           Create Account
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* NAME */}
+        <input
+          type="text"
+          placeholder="Full Name"
+          className="input input-bordered w-full"
+          onChange={(e) => setName(e.target.value)}
+        />
 
-          {/* NAME */}
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            className="input input-bordered w-full"
-            value={form.name}
-            onChange={handleChange}
-          />
+        {/* EMAIL */}
+        <input
+          type="email"
+          placeholder="Email"
+          className="input input-bordered w-full"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          {/* EMAIL */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="input input-bordered w-full"
-            value={form.email}
-            onChange={handleChange}
-          />
+        {/* PASSWORD */}
+        <input
+          type="password"
+          placeholder="Password"
+          className="input input-bordered w-full"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          {/* PHOTO */}
-          <input
-            type="text"
-            name="photo"
-            placeholder="Photo URL"
-            className="input input-bordered w-full"
-            value={form.photo}
-            onChange={handleChange}
-          />
-
-          {/* PASSWORD */}
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="input input-bordered w-full"
-            value={form.password}
-            onChange={handleChange}
-          />
-
-          {/* BUTTON */}
-          <button className="btn btn-primary w-full">
-            Register
-          </button>
-
-        </form>
-
-        {/* LINK */}
-        <p className="text-sm text-center mt-4">
-          Already have an account?{" "}
-          <Link href="/login" className="text-primary">
-            Login
-          </Link>
-        </p>
+        {/* BUTTON */}
+        <button
+          onClick={handleRegister}
+          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
+        >
+          Register
+        </button>
 
       </div>
 

@@ -1,66 +1,82 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client"; // path check
 
-export default function LoginPage() {
+export default function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert("All fields are required");
+      return;
+    }
 
-    // demo validation (later backend connect হবে)
-    if (email && password) {
-      alert("Login Successful (Demo)");
-      window.location.href = "/";
-    } else {
-      alert("Please fill all fields");
+    try {
+      const { data, error } = await authClient.signIn.email({
+        email,
+        password,
+        callbackURL: "/",
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      alert("Login Successful!");
+
+      router.push("/");
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-200">
+    <div className="h-screen flex items-center justify-center">
 
-      <div className="w-full max-w-md bg-base-100 p-8 rounded-xl shadow-md">
+      <div className="p-6 shadow-xl rounded-xl w-96 space-y-4">
 
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-xl font-bold text-center">
           Login
         </h1>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        {/* EMAIL */}
+        <input
+          type="email"
+          placeholder="Email"
+          className="input input-bordered w-full"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          {/* EMAIL */}
-          <input
-            type="email"
-            placeholder="Email"
-            className="input input-bordered w-full"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        {/* PASSWORD */}
+        <input
+          type="password"
+          placeholder="Password"
+          className="input input-bordered w-full"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          {/* PASSWORD */}
-          <input
-            type="password"
-            placeholder="Password"
-            className="input input-bordered w-full"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        {/* BUTTON */}
+        <button
+          onClick={handleLogin}
+          className="btn bg-sky-500 hover:bg-sky-600 text-white w-full"
+        >
+          Login
+        </button>
 
-          {/* BUTTON */}
-          <button className="btn btn-primary w-full">
-            Login
-          </button>
-
-        </form>
-
-        {/* LINKS */}
-        <p className="text-sm text-center mt-4">
-          Don’t have an account?{" "}
-          <Link href="/register" className="text-primary">
+        {/* REGISTER LINK */}
+        <p className="text-sm text-center">
+          Don't have an account?{" "}
+          <a href="/register" className="text-sky-500">
             Register
-          </Link>
+          </a>
         </p>
 
       </div>

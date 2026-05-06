@@ -9,7 +9,9 @@
   }
 }
 
-.animate-scroll {
-  display: inline-flex;
-  animation: scroll 40s linear infinite;
+   .animate-scroll {
+    
+        display: inline-flex;
+        animation: scroll 40s linear infinite;
+
 }
